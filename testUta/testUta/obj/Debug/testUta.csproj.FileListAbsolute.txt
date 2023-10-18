@@ -1,0 +1,14 @@
+C:\Users\fconforti\Desktop\testUta\testUta\testUta\obj\Debug\testUta.csproj.AssemblyReference.cache
+C:\Users\fconforti\Desktop\testUta\testUta\testUta\obj\Debug\testUta.Properties.Resources.resources
+C:\Users\fconforti\Desktop\testUta\testUta\testUta\obj\Debug\testUta.csproj.GenerateResource.cache
+C:\Users\fconforti\Desktop\testUta\testUta\testUta\obj\Debug\testUta.csproj.CoreCompileInputs.cache
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\bin\Debug\testUta.exe.config
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\bin\Debug\testUta.exe
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\bin\Debug\testUta.pdb
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.csproj.AssemblyReference.cache
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.csproj.SuggestedBindingRedirects.cache
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.Properties.Resources.resources
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.csproj.GenerateResource.cache
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.csproj.CoreCompileInputs.cache
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.exe
+C:\Users\fsave\Desktop\UtaSimulatore\testUta\testUta\obj\Debug\testUta.pdb
