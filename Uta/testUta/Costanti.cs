@@ -32,7 +32,8 @@ namespace testUta
         public const double pressioneEsterna = 250; //[Pa]
         public const double costanteStefanBoltzmann = 5.67e-8; //[W/(M^2*K^4)]
         public const double calore_Specifico_Acqua = 4.184;// [J/g*K]
-        public const double calore_Specifico_Aria = 0.717  ;// [J/g*K]// si considera il volume costante
+        public const double calore_Specifico_Aria_VolumeCostante = 0.717  ;// [J/g*K]
+        public const double calore_Specifico_Aria_PressioneCostante = 1.025  ;// [J/Kg*K]
         public const double massa_Molecolare_Aria = 28.96;//[ g/mol]
         public const double costante_Gas = 8.314;//[ J/(mol·K)] //pressione in Pa, volume in M^3 e temperatura in K
         public const double tempoSimulazione = 1; //[s]
@@ -63,8 +64,8 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         public const double batteriaCalda_velocitaAria = 2.10; //[m/s]
-        public const double batteriaCalda_capacitaFreddo = 37.50; //[kW]
-        public const double batteriaCalda_capacitaCaldo = 23.91; //[kW]
+        public const double batteriaCalda_capacitaFreddo = 37500; //[W]
+        public const double batteriaCalda_capacitaCaldo = 23910; //[W]
            /*i valori massimi sono ottenuti come valore medio *2*/
         public const double batteriaCalda_flussoMassimo_Caldo = 1.142; //[l/s]
         public const double batteriaCalda_flussoMassimo_Freddo = 1.142; //[l/s]
@@ -86,8 +87,8 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         public const double batteriaFredda_velocitaAria = 2.12; //[m/s]
-        public const double batteriaFredda_capacitaFreddo = 30.13; //[kW]
-        public const double batteriaFredda_capacitaCaldo = 47.50; //[kW]
+        public const double batteriaFredda_capacitaFreddo = 30130; //[W]
+        public const double batteriaFredda_capacitaCaldo = 47500; //[W]
             /*i valori massimi sono ottenuti come valore medio *2*/
         public const double batteriaFredda_flussoMassimo_Caldo = 2.880; //[l/s]
         public const double batteriaFredda_flussoMassimo_Freddo = 2.27; //[l/s]

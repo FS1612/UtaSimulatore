@@ -62,7 +62,8 @@ namespace testUta
         double uEsterna = Costanti.umiditaEsterna;
         double costante_StefanBoltzmann = Costanti.costanteStefanBoltzmann;
         double calore_Specifico_Acqua = Costanti.calore_Specifico_Acqua;
-        double calore_Specifico_Aria = Costanti.calore_Specifico_Aria;
+        double calore_Specifico_Aria = Costanti.calore_Specifico_Aria_VolumeCostante;
+        double calore_Specifico_Aria_pressioneCostante = Costanti.calore_Specifico_Aria_PressioneCostante;
         double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
         double costante_Gas = Costanti.costante_Gas;
         public Timer timer = new Timer();
@@ -81,7 +82,7 @@ namespace testUta
         double perditaPressione;
         //double aperturaValvola;
         double potenza=0;
-        public Batteria(double tempoSimulazione/*, string tipoBatteria, string stagione*/, double area, double pressione_attuale,double temperatura_attuale, double umidita_attuale,Valvola valvola,double perditaPressione)   
+        public Batteria(double tempoSimulazione/*, string tipoBatteria, string stagione*/, double area, double pressione_attuale,double temperatura_attuale, double umidita_attuale,Valvola valvola,double perditaPressione,double potenza)   
         {// i parametri iniziali sono quelli di inizio simulazione=> saranno calcolati da un sensore posto prima della batteria
             //quelli finali saranno rilevati da un sensore diverso
             this.tempoSimulazione = tempoSimulazione;
@@ -92,13 +93,14 @@ namespace testUta
             //this.aperturaValvola = apertura_valvola;
             this.tFinale = tIniziale;
             this.uFinale = uIniziale;
-            this.pIniziale = 100;
+            //this.pIniziale = 100;
             this.pFinale = pressione_attuale;
             this.area = area;
             //this.tipoBatteria = tipoBatteria;
             //this.stagione = stagione;
             this.valvola = valvola;
             this.perditaPressione = perditaPressione;
+            this.potenza = potenza;
             //i timer accettano solo tempi in millisecondi
             timer.Interval = tempoSimulazione*1000;
             timer.Enabled = true;
@@ -147,7 +149,8 @@ namespace testUta
         {
             double flusso_effettivo = this.valvola.Get_Flusso_attuale(); ;
             double temperaturaAcqua=this.valvola.Get_Temperatura_Acqua();
-           
+            double app= this.valvola.Get_Apertura(); 
+            double potenza_effettiva = this.potenza * this.valvola.Get_Apertura();
             //switch (tipoBatteria)
             //{
             //    case Costanti.batteriaCalda when flusso_effettivo > 0.0:
@@ -186,21 +189,25 @@ namespace testUta
 
             //        break;
             //}
-            if (flusso_effettivo > 0)
+            //if (flusso_effettivo > 0)
+            if (this.valvola.Get_Apertura() > 0)
             {
-                calcoloScambiTermici(this.area, temperaturaAcqua, flusso_effettivo);
+                if (pFinale > pIniziale - perditaPressione) {  
+                    this.pFinale -= this.perditaPressione;
+                }
+                calcoloScambiTermici(this.area, temperaturaAcqua, flusso_effettivo, potenza_effettiva);
                 CalcoloVariazioneUmidità();
-                this.pFinale -= this.perditaPressione;
             }
             else
             {
-                this.pFinale -= this.perditaPressione;
+                if (pFinale > pIniziale - perditaPressione)
+                    this.pFinale -= this.perditaPressione;
                 
             }
 
         }
 
-        private void calcoloScambiTermici(double area, double tacquaIngresso, double flusso_acqua)
+        private void calcoloScambiTermici(double area, double tacquaIngresso, double flusso_acqua, double pot)
         {//le temperature vanno espresse tutte in Kelvin per cui vanno convertite poichè le ricevo in gradi Celsius
 
             double tIniziale_Kelvin = tIniziale + 273.15;
@@ -212,29 +219,42 @@ namespace testUta
             double moli = (pIniziale * volume_tempo) / (costante_Gas * tIniziale_Kelvin);
 
             double massa_aria = moli * massa_Molecolare_Aria;//[g]
-            //per tener conto della valvola che aumenta o diminuisce il flusso d'acqua a temperatura t nella batteria devo moltiplicare il calore per il flusso effettivo
-            //lo scambio termico avviene sia per convezione sia per irraggiamento
-            //per la convezione uso la legge di raffreddamento di Newton Q=hA(T_acqua_radiatore-Testerna)
-            //Q=flusso di calore in watt
-            //h=coefficiente di convezione aria(W/m^2*K)
-            //A=area radiatore
-            double Q_convezione = (coefficienteConvezioneAria * area * (TemperaturaAcquaIngresso_Kelvin - tIniziale_Kelvin))* flusso_acqua;
-            //per lo scambio per irraggiamento ho la formula per l'irraggiamento
-            //Q=sigma*A*(T_acqua_radiatore^4-T_attuale^4)
-            //sigma è la costante di Boltzmann
-            double Q_irraggiamento = (costante_StefanBoltzmann * area * (Math.Pow(TemperaturaAcquaIngresso_Kelvin, 4) - Math.Pow(tIniziale_Kelvin, 4)))*flusso_acqua;
-            //per calcolare la temperatura finale uso la formula seguente: T_finale=t_iniziale+Delta_Conv+Delta_irraggiamento
-            //il delta di convezione si calcola=> Q_conv/(massa_Aria*calore_specifico_aria)
-            // massa aria=>moli⋅Massa_molecolare_aria
-            //per le moli uso la legge dei gas perfetti=> PV=nRT da cui n=PV/RT      
-            double delta_convezione = Q_convezione / (massa_aria * calore_Specifico_Aria);
-            //calcolo l'irraggiamento
-            double delta_irraggiamento = Q_irraggiamento / (massa_aria * calore_Specifico_Aria);
-            // i delta sono considerati in base al tempo [K/s] perciò per rimuovere questa dipendenza li moltiplico per il tempo di simulazione
+                                                             //per tener conto della valvola che aumenta o diminuisce il flusso d'acqua a temperatura t nella batteria devo moltiplicare il calore per il flusso effettivo
+                                                             //lo scambio termico avviene sia per convezione sia per irraggiamento
+                                                             //per la convezione uso la legge di raffreddamento di Newton Q=hA(T_acqua_radiatore-Testerna)
+                                                             //Q=flusso di calore in watt
+                                                             //h=coefficiente di convezione aria(W/m^2*K)
+                                                             //A=area radiatore
+                                                             //double Q_convezione = (coefficienteConvezioneAria * area * (TemperaturaAcquaIngresso_Kelvin - tIniziale_Kelvin))* flusso_acqua;
+                                                             //per lo scambio per irraggiamento ho la formula per l'irraggiamento
+                                                             //Q=sigma*A*(T_acqua_radiatore^4-T_attuale^4)
+                                                             //sigma è la costante di Boltzmann
+                                                             // double Q_irraggiamento = (costante_StefanBoltzmann * area * (Math.Pow(TemperaturaAcquaIngresso_Kelvin, 4) - Math.Pow(tIniziale_Kelvin, 4)))*flusso_acqua;
+                                                             //per calcolare la temperatura finale uso la formula seguente: T_finale=t_iniziale+Delta_Conv+Delta_irraggiamento
+                                                             //il delta di convezione si calcola=> Q_conv/(massa_Aria*calore_specifico_aria)
+                                                             // massa aria=>moli⋅Massa_molecolare_aria
+                                                             //per le moli uso la legge dei gas perfetti=> PV=nRT da cui n=PV/RT      
+                                                             //double delta_convezione = Q_convezione / (massa_aria * calore_Specifico_Aria);
+                                                             //calcolo l'irraggiamento
+                                                             //double delta_irraggiamento = Q_irraggiamento / (massa_aria * calore_Specifico_Aria);
+                                                             // i delta sono considerati in base al tempo [K/s] perciò per rimuovere questa dipendenza li moltiplico per il tempo di simulazione
 
-            double tFinale_Kelvin= tIniziale_Kelvin + (delta_convezione * tempoSimulazione) +(delta_irraggiamento * tempoSimulazione); 
-            tFinale=tFinale_Kelvin-273.15;
-            this.potenza = Q_convezione + Q_irraggiamento;
+            //double tFinale_Kelvin= tIniziale_Kelvin + (delta_convezione * tempoSimulazione) +(delta_irraggiamento * tempoSimulazione); 
+            //tFinale=tFinale_Kelvin-273.15;
+            // this.potenza = Q_convezione + Q_irraggiamento;
+
+            //Q=m*cp*DT
+            //double massa_aria_chili = massa_aria * 1000;
+            //double DeltaT = pot / (batteria_airflow*1.2 * calore_Specifico_Aria_pressioneCostante);
+            //double deltaT_tempo = DeltaT * tempoSimulazione;
+            //this.tFinale += (deltaT_tempo);
+            double rho = 1.2;
+            double Pacqua = (flusso_acqua / 3600) * 10;
+            //double Delta = flusso_acqua / (batteria_airflow * rho * calore_Specifico_Aria_pressioneCostante);
+            //this.tFinale = Delta + tIniziale;
+            double DeltaT= (Pacqua*3600) / (flusso_M3_s * rho * calore_Specifico_Aria_pressioneCostante);
+            double DeltaT_Celsius= DeltaT-273.15;
+            this.tFinale = this.tFinale + DeltaT_Celsius;
 
         }
         private void CalcoloVariazioneUmidità()
@@ -242,7 +262,7 @@ namespace testUta
             // per questo calcolo uso l'equazione della legge di Clausius-Clapeyron ossia ln(P2 / P1) = - (ΔHvap / R) * (1 / T2 - 1 / T1)
             //in particolare una sua derivazione UR2 / UR1 = (P2 / P1) * exp[ΔHvap / R * (1 / T1 - 1 / T2)]
             //da cui=>UR2={(P2 / P1) * exp[ΔHvap / R * (1 / T1 - 1 / T2)]}*UR1
-            double ΔHvap= 40.7 * 1000; //[J/mol] moltiplico per mille perchè nelle tabelle viene espresso in kj/mol
+            double ΔHvap= 40700; //[J/mol] 
 
             //converto le temperature in kelvin
             double tIniziele_Kelvin = this.tIniziale + 273.15;
@@ -251,15 +271,18 @@ namespace testUta
             // Calcolo la pressione di vapore iniziale (P1)
             double P1 = Math.Exp(ΔHvap / (this.costante_Gas * tIniziele_Kelvin));
             // Calcolo la pressione di vapore finale(P2) a temperatura T2
-            double P2 = P1 * Math.Exp(ΔHvap / (this.costante_Gas * (1 / tIniziele_Kelvin - 1 / tFinalee_Kelvin)));
+            double P2 = P1 * Math.Exp((ΔHvap /this.costante_Gas) * ((1 / tIniziele_Kelvin) - (1 / tFinalee_Kelvin)));
+            
             this.uFinale = (P2 / P1) * this.uIniziale;
-
-
+            //this.uFinale = this.uFinale * this.pIniziale/this.pFinale;
+            
         }
         public double GetPotenza() { return this.potenza; }
         public double Get_Temperatura_Finale() { return this.tFinale; }
         public double Get_Umidita_Finale() { return this.uFinale; }
         public double Get_Pressione_Finale() { return this.pFinale; }
+        public double Get_Pressione_Iniziale() { return this.pIniziale; }
+        public double Get_Umidita_Iniziale() { return this.uIniziale; }
         public Valvola Get_Valvola() { return this.valvola; }
     }
 }

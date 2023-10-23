@@ -16,14 +16,14 @@ namespace testUta
         //double differenza_Pressione_BatteriaFredda_Caldo = Costanti.valvola_Differenza_Pressione_BatteriaFredda_Caldo;
         //double differenza_Pressione_BatteriaCalda_Caldo = Costanti.valvola_Differenza_Pressione_BatteriaFredda_Caldo;
         //double differenza_Pressione_BatteriaCalda_Freddo = Costanti.valvola_Differenza_Pressione_BatteriaFredda_Caldo;
-        double batteriaFredda_diametroValvola = Costanti.batteriaFredda_diametroValvola;
-        double batteriaCalda_diametroValvola = Costanti.batteriaCalda_diametroValvola;
-        double batteriaCalda_velocitaAcquaFreddo = Costanti.batteriaCalda_velocitaMassimaAcqua_Freddo;
-        double batteriaCalda_velocitaAcquaCaldo = Costanti.batteriaCalda_velocitaMassimoAcqua_Caldo;
-        double batteriaFredda_velocitaAcquaFreddo = Costanti.batteriaFredda_velocitaMassimaAcqua_Freddo;
-        double batteriaFredda_velocitaAcquaCaldo = Costanti.batteriaFredda_velocitaMassimaAcqua_Caldo;
-        double batteriaUmidificatrice_velocitaAcqua = Costanti.batteriaFredda_Umidificatrice_velocitaMassimaAcqua;
-        double batteriaUmidificatrice_diametroValvola = Costanti.batteriaFredda_Umidificatrice_diametroValvola;
+        //double batteriaFredda_diametroValvola = Costanti.batteriaFredda_diametroValvola;
+        //double batteriaCalda_diametroValvola = Costanti.batteriaCalda_diametroValvola;
+        //double batteriaCalda_velocitaAcquaFreddo = Costanti.batteriaCalda_velocitaMassimaAcqua_Freddo;
+        //double batteriaCalda_velocitaAcquaCaldo = Costanti.batteriaCalda_velocitaMassimoAcqua_Caldo;
+        //double batteriaFredda_velocitaAcquaFreddo = Costanti.batteriaFredda_velocitaMassimaAcqua_Freddo;
+        //double batteriaFredda_velocitaAcquaCaldo = Costanti.batteriaFredda_velocitaMassimaAcqua_Caldo;
+        //double batteriaUmidificatrice_velocitaAcqua = Costanti.batteriaFredda_Umidificatrice_velocitaMassimaAcqua;
+        //double batteriaUmidificatrice_diametroValvola = Costanti.batteriaFredda_Umidificatrice_diametroValvola;
         double percentuale_Apertura;
         double tempoSimulazione;
         double flussoAttuale;
@@ -120,11 +120,16 @@ namespace testUta
             this.Area_Sezione_Trasversale_Totale = Math.PI * Math.Pow(raggio, 2);
             this.Area_Sezione_Trasversale_Attuale = percentuale_Apertura * Area_Sezione_Trasversale_Totale;
             this.flussoAttuale = Area_Sezione_Trasversale_Attuale * this.velocitaAcqua*tempoSimulazione;//[M^3/s]
+
+
+            
             
         }
         public double Get_Flusso_attuale() { return flussoAttuale; }    
         public void Set_Apertura_valvola(double apertura) { this.percentuale_Apertura = apertura; }
         public double Get_Velocita_Acqua() { return this.velocitaAcqua; }
         public double Get_Temperatura_Acqua() { return this.temperaturaAcqua; }
+        public double Get_Apertura() { return this.percentuale_Apertura; }
+       
     }
 }
