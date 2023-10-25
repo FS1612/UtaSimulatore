@@ -37,6 +37,7 @@ namespace testUta
         double raggio;
         double Area_Sezione_Trasversale_Totale;
         double Area_Sezione_Trasversale_Attuale;
+        double massa_acqua;
         public Valvola(double apertura,double tempoSimulazione,/* string tipoBatteria,string stagione,*/ double velocitaAcqua,double temperaturaAcqua,double diametro)
         {this.tempoSimulazione=tempoSimulazione*1000;
             this.velocitaAcqua = velocitaAcqua;
@@ -120,16 +121,18 @@ namespace testUta
             this.Area_Sezione_Trasversale_Totale = Math.PI * Math.Pow(raggio, 2);
             this.Area_Sezione_Trasversale_Attuale = percentuale_Apertura * Area_Sezione_Trasversale_Totale;
             this.flussoAttuale = Area_Sezione_Trasversale_Attuale * this.velocitaAcqua*tempoSimulazione;//[M^3/s]
+            double rho = 997;// kg / m³
+            this.massa_acqua = this.Area_Sezione_Trasversale_Attuale * rho * velocitaAcqua;
 
 
-            
-            
+
+
         }
         public double Get_Flusso_attuale() { return flussoAttuale; }    
         public void Set_Apertura_valvola(double apertura) { this.percentuale_Apertura = apertura; }
         public double Get_Velocita_Acqua() { return this.velocitaAcqua; }
         public double Get_Temperatura_Acqua() { return this.temperaturaAcqua; }
         public double Get_Apertura() { return this.percentuale_Apertura; }
-       
+
     }
 }

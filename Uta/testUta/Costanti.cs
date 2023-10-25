@@ -31,12 +31,16 @@ namespace testUta
         public const double umiditaEsterna = 20; //[%]
         public const double pressioneEsterna = 250; //[Pa]
         public const double costanteStefanBoltzmann = 5.67e-8; //[W/(M^2*K^4)]
-        public const double calore_Specifico_Acqua = 4.184;// [J/g*K]
+        public const double calore_Specifico_Acqua = 4186;// [J/kg*K]
         public const double calore_Specifico_Aria_VolumeCostante = 0.717  ;// [J/g*K]
-        public const double calore_Specifico_Aria_PressioneCostante = 1.025  ;// [J/Kg*K]
+        public const double calore_Specifico_Aria_PressioneCostante = 1005  ;// [J/Kg*K]
         public const double massa_Molecolare_Aria = 28.96;//[ g/mol]
         public const double costante_Gas = 8.314;//[ J/(mol·K)] //pressione in Pa, volume in M^3 e temperatura in K
-        public const double tempoSimulazione = 1; //[s]
+        public const double tempoSimulazione = 1; //[s] 
+        public const double flussoMandata = 14000; //[m^3/h] 
+        public const double flussoRipresa = 12600; //[m^3/h] 
+
+
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
@@ -145,6 +149,14 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         public const double ventola_FattoreK_adimensionale = 170;
         public const double ventola_Diametro = 14.9; //[M]
-
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////Recuperatore  ////////////////////////////////// 
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        public const double Recuperatore_Efficienza_Termica = 0.7;//[%]
+        public const double Recuperatore_Efficienza_Umidita = 0.68;//[%]
     }
 }

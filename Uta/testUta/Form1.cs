@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using testUta.Elementi_Meccanici;
 
 namespace testUta
 {
@@ -24,12 +25,15 @@ namespace testUta
         double batteriaFredda_diametroValvola = Costanti.batteriaFredda_diametroValvola;
         double batteriaFredda_TemperaturaAcquaIngresso = Costanti.batteriaFredda_TemperaturaAcquaIngresso;
         double batteriaFredda_capacitaFreddo = Costanti.batteriaFredda_capacitaFreddo;
+        double batteriaFredda_TemperaturaAcquaUscita = Costanti.batteriaFredda_TemperaturaAcquaUscita;
         Batteria bat;
+        Recuperatore recuperatore;
         public Form1()
         {
             InitializeComponent();
              Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
-             bat = new Batteria(1, batteriaCalda_Area, 200, 20, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo);
+             bat = new Batteria(1, batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo,batteriaFredda_TemperaturaAcquaUscita);
+            recuperatore = new Recuperatore(0, 1, 0, 0);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -74,6 +78,8 @@ namespace testUta
             textUiniziale.Invoke((MethodInvoker)(() => textUiniziale.Text = bat.Get_Umidita_Iniziale().ToString())) ;
             textPAttuale.Invoke((MethodInvoker)(() => textPAttuale.Text = bat.Get_Pressione_Finale().ToString())) ;
             textUAttuale.Invoke((MethodInvoker)(() => textUAttuale.Text = bat.Get_Umidita_Finale().ToString())) ;
+            textUmiditamandata.Invoke((MethodInvoker)(()=> textUmiditamandata.Text=recuperatore.Get_UmiditaMandata().ToString()));
+            textTemperaturaMandata.Invoke((MethodInvoker)(()=> textTemperaturaMandata.Text=recuperatore.Get_TemperaturaMandata().ToString()));
         }
         public void Aggiorna()
         {
@@ -91,6 +97,74 @@ namespace testUta
             {
                 bat.Get_Valvola().Set_Apertura_valvola(0);
             }
+        }
+        private void aggiornaUmidita(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textUmiditaRipresa.Text))
+            {
+                double u = double.Parse(textUmiditaRipresa.Text);
+                recuperatore.Set_UmiditaRipresa(u);
+            }
+            else
+            {
+                recuperatore.Set_UmiditaRipresa(0);
+            }
+        }
+        private void aggiornaTemperatura(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textTempRipresa.Text))
+            {
+                double u = double.Parse(textTempRipresa.Text);
+                recuperatore.Set_TemperaturaRipresa(u);
+            }
+            else
+            {
+                recuperatore.Set_TemperaturaRipresa(0);
+            }
+        }
+        private void aggiornaAvviamento(object sender, EventArgs e)
+        {
+            if (recuperatore.Get_Avviamento() == 0) { recuperatore.Set_Avviamento(1); }
+            else recuperatore.Set_Avviamento(0);
+        }
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

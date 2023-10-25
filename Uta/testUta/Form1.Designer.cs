@@ -51,6 +51,17 @@ namespace testUta
             this.textUAttuale = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textUiniziale = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textTemperaturaMandata = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textTempRipresa = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textUmiditamandata = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textUmiditaRipresa = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textTAttuale
@@ -224,11 +235,124 @@ namespace testUta
             this.textUiniziale.Size = new System.Drawing.Size(100, 20);
             this.textUiniziale.TabIndex = 16;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(306, 543);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(112, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Temperatura Mandata";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // textTemperaturaMandata
+            // 
+            this.textTemperaturaMandata.Location = new System.Drawing.Point(432, 536);
+            this.textTemperaturaMandata.Name = "textTemperaturaMandata";
+            this.textTemperaturaMandata.Size = new System.Drawing.Size(100, 20);
+            this.textTemperaturaMandata.TabIndex = 26;
+            this.textTemperaturaMandata.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(330, 504);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(97, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "temperatura ripresa";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // textTempRipresa
+            // 
+            this.textTempRipresa.Location = new System.Drawing.Point(432, 497);
+            this.textTempRipresa.Name = "textTempRipresa";
+            this.textTempRipresa.Size = new System.Drawing.Size(100, 20);
+            this.textTempRipresa.TabIndex = 24;
+            this.textTempRipresa.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(330, 460);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(86, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Umidita mandata";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // textUmiditamandata
+            // 
+            this.textUmiditamandata.Location = new System.Drawing.Point(432, 453);
+            this.textUmiditamandata.Name = "textUmiditamandata";
+            this.textUmiditamandata.Size = new System.Drawing.Size(100, 20);
+            this.textUmiditamandata.TabIndex = 22;
+            this.textUmiditamandata.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(330, 421);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "umidita Ripresa";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // textUmiditaRipresa
+            // 
+            this.textUmiditaRipresa.Location = new System.Drawing.Point(432, 414);
+            this.textUmiditaRipresa.Name = "textUmiditaRipresa";
+            this.textUmiditaRipresa.Size = new System.Drawing.Size(100, 20);
+            this.textUmiditaRipresa.TabIndex = 20;
+            this.textUmiditaRipresa.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(551, 411);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "Aggiorna";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.aggiornaUmidita);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(551, 494);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "Aggiorna";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.aggiornaTemperatura);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(677, 379);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 30;
+            this.button4.Text = "Avvia";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.aggiornaAvviamento);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 607);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textTemperaturaMandata);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textTempRipresa);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.textUmiditamandata);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textUmiditaRipresa);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textUAttuale);
             this.Controls.Add(this.label9);
@@ -280,6 +404,17 @@ namespace testUta
         private System.Windows.Forms.TextBox textUAttuale;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textUiniziale;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textTemperaturaMandata;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textTempRipresa;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textUmiditamandata;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textUmiditaRipresa;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 
