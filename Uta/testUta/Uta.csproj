@@ -58,6 +58,7 @@
     <Compile Include="Costanti.cs" />
     <Compile Include="Elementi Meccanici\Recuperatore.cs" />
     <Compile Include="Elementi Meccanici\Ventilatore.cs" />
+    <Compile Include="elementi termodinamici\Miscelatore.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

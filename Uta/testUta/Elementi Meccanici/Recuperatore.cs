@@ -43,7 +43,7 @@ namespace testUta.Elementi_Meccanici
 
                 this.stato = 1;
 
-                   this.tempMandata =  (efficienzaTemperatura * this.tempRipresa);
+                this.tempMandata =  (efficienzaTemperatura * this.tempRipresa);
 
                 this.umiditaMandata = (this.umiditaRipresa * this.efficienzaUmidita) ;
             }

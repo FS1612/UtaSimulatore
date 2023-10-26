@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using testUta.Attuatori;
 using testUta.Elementi_Meccanici;
 
 namespace testUta
@@ -28,12 +29,17 @@ namespace testUta
         double batteriaFredda_TemperaturaAcquaUscita = Costanti.batteriaFredda_TemperaturaAcquaUscita;
         Batteria bat;
         Recuperatore recuperatore;
+        Motore motore_no_fineCorsa;
+        Ventilatore v;
         public Form1()
         {
             InitializeComponent();
-             Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
-             bat = new Batteria(1, batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo,batteriaFredda_TemperaturaAcquaUscita);
-            recuperatore = new Recuperatore(0, 1, 0, 0);
+            // Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
+            // bat = new Batteria(1, batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo,batteriaFredda_TemperaturaAcquaUscita);
+            //recuperatore = new Recuperatore(0, 1, 0, 0);
+
+            motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
+            v = new Ventilatore(100,motore_no_fineCorsa,Costanti.velocitaAriaMandata);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,23 +75,83 @@ namespace testUta
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            textTempo.Invoke((MethodInvoker)(() => textTempo.Text = 1000 + " ms")) ;
-            textTAttuale.Invoke((MethodInvoker)(() => textTAttuale.Text = bat.Get_Temperatura_Finale().ToString())) ;
-            textAperturaValvola.Invoke((MethodInvoker)(() => textAperturaValvola.Text = bat.Get_Valvola().Get_Apertura().ToString())) ;
-            textPotenza.Invoke((MethodInvoker)(() => textPotenza.Text = bat.GetPotenza().ToString())) ;
-            textFlusso.Invoke((MethodInvoker)(() => textFlusso.Text = bat.Get_Valvola().Get_Flusso_attuale().ToString())) ;
-            textPIniziale.Invoke((MethodInvoker)(() => textPIniziale.Text = bat.Get_Pressione_Iniziale().ToString())) ;
-            textUiniziale.Invoke((MethodInvoker)(() => textUiniziale.Text = bat.Get_Umidita_Iniziale().ToString())) ;
-            textPAttuale.Invoke((MethodInvoker)(() => textPAttuale.Text = bat.Get_Pressione_Finale().ToString())) ;
-            textUAttuale.Invoke((MethodInvoker)(() => textUAttuale.Text = bat.Get_Umidita_Finale().ToString())) ;
-            textUmiditamandata.Invoke((MethodInvoker)(()=> textUmiditamandata.Text=recuperatore.Get_UmiditaMandata().ToString()));
-            textTemperaturaMandata.Invoke((MethodInvoker)(()=> textTemperaturaMandata.Text=recuperatore.Get_TemperaturaMandata().ToString()));
+            //textTempo.Invoke((MethodInvoker)(() => textTempo.Text = 1000 + " ms")) ;
+            //textTAttuale.Invoke((MethodInvoker)(() => textTAttuale.Text = bat.Get_Temperatura_Finale().ToString())) ;
+            //textAperturaValvola.Invoke((MethodInvoker)(() => textAperturaValvola.Text = bat.Get_Valvola().Get_Apertura().ToString())) ;
+            //textPotenza.Invoke((MethodInvoker)(() => textPotenza.Text = bat.GetPotenza().ToString())) ;
+            //textFlusso.Invoke((MethodInvoker)(() => textFlusso.Text = bat.Get_Valvola().Get_Flusso_attuale().ToString())) ;
+            //textPIniziale.Invoke((MethodInvoker)(() => textPIniziale.Text = bat.Get_Pressione_Iniziale().ToString())) ;
+            //textUiniziale.Invoke((MethodInvoker)(() => textUiniziale.Text = bat.Get_Umidita_Iniziale().ToString())) ;
+            //textPAttuale.Invoke((MethodInvoker)(() => textPAttuale.Text = bat.Get_Pressione_Finale().ToString())) ;
+            //textUAttuale.Invoke((MethodInvoker)(() => textUAttuale.Text = bat.Get_Umidita_Finale().ToString())) ;
+            //textUmiditamandata.Invoke((MethodInvoker)(()=> textUmiditamandata.Text=recuperatore.Get_UmiditaMandata().ToString()));
+            //textTemperaturaMandata.Invoke((MethodInvoker)(()=> textTemperaturaMandata.Text=recuperatore.Get_TemperaturaMandata().ToString()));
+            textNomeMotore.Invoke((MethodInvoker)(() => textNomeMotore.Text = motore_no_fineCorsa.nome ));
+            textMarcaMotore.Invoke((MethodInvoker)(() => textMarcaMotore.Text = motore_no_fineCorsa.marca ));
+            textModelloMotore.Invoke((MethodInvoker)(() => textModelloMotore.Text = motore_no_fineCorsa.modello ));
+            textCostruttoreMotore.Invoke((MethodInvoker)(() => textCostruttoreMotore.Text = motore_no_fineCorsa.costruttore ));
+            textDescrizioneMotore.Invoke((MethodInvoker)(() => textDescrizioneMotore.Text = motore_no_fineCorsa.descrizione));
+            textAllarmeMotore.Invoke((MethodInvoker)(() => textAllarmeMotore.Text = motore_no_fineCorsa.allarme.ToString()));
+            textPosizioneAttualeMotore.Invoke((MethodInvoker)(() => textPosizioneAttualeMotore.Text = motore_no_fineCorsa.posizioneAttuale.ToString()));
+            textVelocitaAttualeMotore.Invoke((MethodInvoker)(() => textVelocitaAttualeMotore.Text = motore_no_fineCorsa.velocitaAttuale.ToString()));
+            textAvviamentoMotore.Invoke((MethodInvoker)(() => textAvviamentoMotore.Text = motore_no_fineCorsa.attivato.ToString()));
+            textVelocitaMassimaMotore.Invoke((MethodInvoker)(() => textVelocitaMassimaMotore.Text = motore_no_fineCorsa.velocitaMassima.ToString()));
+            textFineCorsaMassimoMotore.Invoke((MethodInvoker)(() => textFineCorsaMassimoMotore.Text = motore_no_fineCorsa.fineCorsaMassimo.ToString()));
+            textFineCorsaMinimoMotore.Invoke((MethodInvoker)(() => textFineCorsaMinimoMotore.Text = motore_no_fineCorsa.fineCorsaMinimo.ToString()));
+            textMassimaRotazioneMotore.Invoke((MethodInvoker)(() => textMassimaRotazioneMotore.Text = motore_no_fineCorsa.gradiMassimi.ToString()));
+            textTempoRotazioneMassimoMotore.Invoke((MethodInvoker)(() => textTempoRotazioneMassimoMotore.Text = motore_no_fineCorsa.tempoRotazioneMassimo.ToString()));
+            textTempoRotazioneAttualeMotore.Invoke((MethodInvoker)(() => textTempoRotazioneAttualeMotore.Text = motore_no_fineCorsa.tempoRotazione.ToString()));
+            textPressionePostVentola.Invoke((MethodInvoker)(() => textPressionePostVentola.Text = v.pressioneFinale.ToString()));
+            textPressionePreventola.Invoke((MethodInvoker)(() => textPressionePreventola.Text = v.pressioneIniziale.ToString()));
+            textVelocitaVentola.Invoke((MethodInvoker)(() => textVelocitaVentola.Text = v.velocitàAttuale.ToString()));
         }
-        public void Aggiorna()
+        private void aggiornaVelocita(object sender, EventArgs e)
         {
-            
+            if (!string.IsNullOrEmpty(textVelocitaRichiestaMotore.Text))
+            {
+                double vel = double.Parse(textVelocitaRichiestaMotore.Text);
+                motore_no_fineCorsa.velocitaRichiesta=vel;            }
+            else
+            {
+                motore_no_fineCorsa.velocitaRichiesta = 0;
+            }
         }
+        private void aggiornaPosizione(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textPosizioneRichiestaMotore.Text))
+            {
+                double pos = double.Parse(textPosizioneRichiestaMotore.Text);
+                motore_no_fineCorsa.posizioneRichiesta = pos;
+            }
+            else
+            {
+                motore_no_fineCorsa.posizioneRichiesta = 0;
+            }
+        }
+        private void aggiornaAllarme(object sender, EventArgs e)
+        {
+            if (motore_no_fineCorsa.allarme==0)
+            {
+                
+                motore_no_fineCorsa.allarme = 1;
+            }
+            else
+            {
+                motore_no_fineCorsa.allarme = 0;
+            }
+        }
+        private void aggiornaAvio(object sender, EventArgs e)
+        {
+            if (motore_no_fineCorsa.attivato == 0)
+            {
 
+                motore_no_fineCorsa.attivato = 1;
+            }
+            else
+            {
+                motore_no_fineCorsa.attivato = 0;
+            }
+        }
         private void aggiorna(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(textAggiornamento.Text))

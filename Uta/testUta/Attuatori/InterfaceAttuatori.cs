@@ -16,10 +16,22 @@ namespace testUta.Attuatori
         string marca { get; set; }
         string modello { get; set; }
         int attivato { get; set; }//booleano
-        double stato { get; set; }//sia stati booleani sia analogici
+        double posizioneAttuale { get; set; }//sia stati booleani sia analogici
         int allarme { get; set; }//booleano
-        double richiesta { get; set; }
-        
+        double velocitaRichiesta { get; set; }
+        double posizioneRichiesta { get; set; }
+        double velocitaAttuale { get; set; }
+        double velocitaMassima { get; set; }//in giri al secondo
+        double spostamentoMassimo { get; set; }//in gradi
+        int fineCorsaMassimo { get; set; }//booleani
+        int fineCorsaMinimo { get; set; }//booleani
+        double tempoRotazione { get; set; }
+        double tempoRotazioneRichiesto { get; set; }
+        double tempoRotazioneMassimo { get; set; }//sec
+        double gradiMassimi { get; set; }
+
+
+
 
 
     }

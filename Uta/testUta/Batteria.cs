@@ -12,7 +12,7 @@ namespace testUta
     public class Batteria
     {
         double batteria_airflow =Costanti.batteria_airflow; 
-        double coefficienteConvezioneAria = Costanti.coefficienteConvezioneAria;
+        
         //double batteriaCalda_velocitaAria = Costanti.batteriaCalda_velocitaAria;
         //double batteriaCalda_capacitaFreddo = Costanti.batteriaCalda_capacitaFreddo;
         //double batteriaCalda_capacitaCaldo = Costanti.batteriaCalda_capacitaCaldo;
@@ -232,7 +232,7 @@ namespace testUta
             // per questo calcolo uso l'equazione della legge di Clausius-Clapeyron ossia ln(P2 / P1) = - (ΔHvap / R) * (1 / T2 - 1 / T1)
             //in particolare una sua derivazione UR2 / UR1 = (P2 / P1) * exp[ΔHvap / R * (1 / T1 - 1 / T2)]
             //da cui=>UR2={(P2 / P1) * exp[ΔHvap / R * (1 / T1 - 1 / T2)]}*UR1
-            double ΔHvap= 40700; //[J/mol] 
+            double ΔHvap= 40700; //[J/mol] calore latente di vaporizzazione dell'acqua
 
             //converto le temperature in kelvin
             double tIniziele_Kelvin = this.tFinale-this.deltaT + 273.15;

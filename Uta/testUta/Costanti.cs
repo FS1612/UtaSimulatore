@@ -39,7 +39,8 @@ namespace testUta
         public const double tempoSimulazione = 1; //[s] 
         public const double flussoMandata = 14000; //[m^3/h] 
         public const double flussoRipresa = 12600; //[m^3/h] 
-
+        public const double velocitaAriaMandata = 1.67; //[m/s] 
+        public const double velocitaAriaRiipresa = 1.50; //[m/s] 
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
