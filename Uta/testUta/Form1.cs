@@ -39,7 +39,7 @@ namespace testUta
             //recuperatore = new Recuperatore(0, 1, 0, 0);
 
             motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
-            v = new Ventilatore(100,motore_no_fineCorsa,Costanti.velocitaAriaMandata);
+            v = new Ventilatore(100,motore_no_fineCorsa,Costanti.velocitaAriaMandata,Costanti.ventolaMandata_SezioneTrasversale);
         }
 
         private void Form1_Load(object sender, EventArgs e)

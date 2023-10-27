@@ -61,42 +61,63 @@ namespace testUta.Attuatori
             if (attivato == 1 && allarme == 0) {
                 if (spostamentoMassimo == -1)
                 {
-                    double velocitaAttuale_Rad_Min = (this.velocitaAttuale * 2 * Math.PI);
-                    
-                    double velocitaAttuale_Rad_Sec = velocitaAttuale_Rad_Min / 60;
-                    double velocitaMassima_Rad_Min = (this.velocitaMassima * 2 * Math.PI);
-                    double velocitaMassima_Rad_Sec = velocitaMassima_Rad_Min / 60;
-                    double velocitaRichiesta_Rad_Min = (this.velocitaRichiesta * 2 * Math.PI);
-                    double velocitaRichiesta_Rad_Sec = velocitaRichiesta_Rad_Min / 60; Gestine_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassima_Rad_Sec, velocitaRichiesta_Rad_Sec);
+                    //    double velocitaAttuale_Rad_Min = (this.velocitaAttuale * 2 * Math.PI);
+                    //    double velocitaAttuale_Rad_Sec = velocitaAttuale_Rad_Min / 60;
+                    //    double velocitaMassima_Rad_Min = (this.velocitaMassima * 2 * Math.PI);
+                    //    double velocitaMassima_Rad_Sec = velocitaMassima_Rad_Min / 60;
+                    //    double velocitaRichiesta_Rad_Min = (this.velocitaRichiesta * 2 * Math.PI);
+                    //    double velocitaRichiesta_Rad_Sec = velocitaRichiesta_Rad_Min / 60;
+                    double velocitaAttuale_Rad_Sec = CheckVelocita(this.velocitaAttuale);
+                    double velocitaMassima_Rad_Sec = CheckVelocita(this.velocitaMassima);
+                    double velocitaRichiesta_Rad_Sec = CheckVelocita(this.velocitaRichiesta);
+
+                    //Gestione_Motore_Senza_Finecorsa(CheckVelocita(this.velocitaAttuale), CheckVelocita(this.velocitaMassima), CheckVelocita(velocitaRichiesta));
+                    Gestione_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassima_Rad_Sec, velocitaRichiesta_Rad_Sec);
                 }
                 //se ho un motore di cui voglio controllare la posizione allora devo supporre la velocita sempre costante e la presenza di finecorsa
-                else Gestine_Motore_Con_Finecorsa();
+                else Gestione_Motore_Con_Finecorsa();
             }
             
         }
-        public double Gestine_Motore_Senza_Finecorsa(double velocitaAttuale_Rad_Sec, double velocitaMassima_Rad_Sec,double velocitaRichiesta_Rad_Sec)
+        public void Gestione_Motore_Senza_Finecorsa(double velocitaAttuale_Rad_Sec, double velocitaMassima_Rad_Sec,double velocitaRichiesta_Rad_Sec)
         {//converto le velocita in radianti al secondo
             double accelerazioneAngolare;
-            if (velocitaAttuale_Rad_Sec < velocitaRichiesta_Rad_Sec&& velocitaRichiesta_Rad_Sec< velocitaMassima_Rad_Sec)
+            if ( velocitaRichiesta_Rad_Sec  <= velocitaMassima_Rad_Sec)
             {
-             accelerazioneAngolare = (velocitaRichiesta_Rad_Sec - 0) / this.timer.Interval;
+                
+                accelerazioneAngolare = (velocitaMassima_Rad_Sec - 0) / this.timer.Interval;
+                    
                 double accelerazioneAngolare_rad_s = (accelerazioneAngolare * 2 * Math.PI) / 60;
-                double velocitaFinale_Rad_S = velocitaAttuale_Rad_Sec + (accelerazioneAngolare_rad_s * this.timer.Interval);
+                double x;
+                if (velocitaRichiesta_Rad_Sec >= velocitaAttuale_Rad_Sec) { 
+                    x = (velocitaAttuale_Rad_Sec + (accelerazioneAngolare_rad_s * this.timer.Interval)); 
+                if(x> velocitaRichiesta_Rad_Sec) { x = velocitaRichiesta_Rad_Sec; }
+                        }
+                else  { x = (velocitaAttuale_Rad_Sec - (accelerazioneAngolare_rad_s * this.timer.Interval));
+                    if (x < velocitaRichiesta_Rad_Sec) { x = velocitaRichiesta_Rad_Sec; }
+                }
+                
+              
+                double velocitaFinale_Rad_S;
+                
+                if (x >= 0 && x <= velocitaMassima_Rad_Sec) { velocitaFinale_Rad_S = x; }
+                else if (x > velocitaMassima_Rad_Sec) { velocitaFinale_Rad_S = velocitaMassima_Rad_Sec; }
+                else { velocitaFinale_Rad_S = 0; }
                 //il controllore richiede la velocita in giri al minuto perciò li converto
-                this.velocitaAttuale =(velocitaFinale_Rad_S * 60)/(2*Math.PI);
+                this.velocitaAttuale = (velocitaFinale_Rad_S * 60) / (2 * Math.PI);
                 double perditaCarico = 0.07 * velocitaAttuale;
                 velocitaEffettiva = velocitaAttuale - perditaCarico;
             }
-            else { accelerazioneAngolare = 0; }
-            return accelerazioneAngolare;
+            //else { accelerazioneAngolare = 0; }           
+            //return accelerazioneAngolare;
         }
-        public void Gestine_Motore_Con_Finecorsa() {
+        public void Gestione_Motore_Con_Finecorsa() {
             double velocitaAttuale_Rad_Sec = (this.gradiMassimi / tempoRotazione) * (Math.PI / 180);
             double velocitaMassimae_Rad_Sec = (this.gradiMassimi / tempoRotazioneMassimo) * (Math.PI / 180);
             double velocitaRichiesta_Rad_Sec = (this.gradiMassimi / tempoRotazioneRichiesto) * (Math.PI / 180);
             if (fineCorsaMinimo == 1 && fineCorsaMassimo == 0)
             {//per effettuare a priori un check sulle velocita
-                Gestine_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassimae_Rad_Sec, velocitaRichiesta_Rad_Sec);
+                Gestione_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassimae_Rad_Sec, velocitaRichiesta_Rad_Sec);
                 if (posizioneAttuale< posizioneRichiesta&&posizioneRichiesta<gradiMassimi) { 
                     double gradi_al_secondo=velocitaAttuale_Rad_Sec * (180 / Math.PI);
                     posizioneAttuale += gradi_al_secondo;
@@ -105,7 +126,7 @@ namespace testUta.Attuatori
             }
             if (fineCorsaMinimo == 0 && fineCorsaMassimo == 1) {
 
-                Gestine_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassimae_Rad_Sec, velocitaRichiesta_Rad_Sec);
+                Gestione_Motore_Senza_Finecorsa(velocitaAttuale_Rad_Sec, velocitaMassimae_Rad_Sec, velocitaRichiesta_Rad_Sec);
                 if (posizioneAttuale >= posizioneRichiesta && posizioneRichiesta >0)
                 {
                     double gradi_al_secondo = gradiMassimi/tempoRotazione;
@@ -126,7 +147,22 @@ namespace testUta.Attuatori
                 fineCorsaMinimo = 1;
             }
 
+       
         }
-
+        private double CheckVelocita(double velocitaDaControllare)
+        {
+            double risultato;
+            double velocitaDaControllare_Rad_Min = (velocitaDaControllare * 2 * Math.PI);
+            double velocitaDaControllare_Rad_Sec = velocitaDaControllare_Rad_Min / 60;
+            double velocitaMassima_Rad_Min = (this.velocitaMassima * 2 * Math.PI);
+            double velocitaMassima_Rad_Sec = velocitaMassima_Rad_Min / 60;
+            if (velocitaDaControllare_Rad_Sec > 0 && velocitaDaControllare_Rad_Sec < velocitaMassima_Rad_Sec)
+            {
+                risultato = velocitaDaControllare_Rad_Sec;
+            }
+            else if (velocitaDaControllare_Rad_Sec <= 0) { risultato = 0; }
+            else { risultato = velocitaMassima_Rad_Sec; }
+            return risultato;
+        }
     }
 }
