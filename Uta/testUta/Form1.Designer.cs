@@ -108,6 +108,8 @@ namespace testUta
             this.textPressionePostVentola = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.textVelocitaVentola = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textVelocitaAria = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textTAttuale
@@ -761,11 +763,29 @@ namespace testUta
             this.textVelocitaVentola.Size = new System.Drawing.Size(100, 20);
             this.textVelocitaVentola.TabIndex = 75;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(400, 708);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(65, 13);
+            this.label34.TabIndex = 78;
+            this.label34.Text = "Velocita aria";
+            // 
+            // textVelocitaAria
+            // 
+            this.textVelocitaAria.Location = new System.Drawing.Point(517, 701);
+            this.textVelocitaAria.Name = "textVelocitaAria";
+            this.textVelocitaAria.Size = new System.Drawing.Size(100, 20);
+            this.textVelocitaAria.TabIndex = 77;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 730);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.textVelocitaAria);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.textVelocitaVentola);
             this.Controls.Add(this.label32);
@@ -931,6 +951,8 @@ namespace testUta
         private System.Windows.Forms.TextBox textPressionePostVentola;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox textVelocitaVentola;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox textVelocitaAria;
     }
 }
 

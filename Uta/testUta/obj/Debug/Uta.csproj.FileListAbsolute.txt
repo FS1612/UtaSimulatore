@@ -83,3 +83,7 @@ C:\gitlab\UtaSimulatore\Uta\testUta\obj\Debug\Uta.csproj.CoreCompileInputs.cache
 C:\gitlab\UtaSimulatore\Uta\testUta\obj\Debug\Uta.csproj.CopyComplete
 C:\gitlab\UtaSimulatore\Uta\testUta\obj\Debug\testUta.exe
 C:\gitlab\UtaSimulatore\Uta\testUta\obj\Debug\testUta.pdb
+C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.dll
+C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.dll
+C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.xml
+C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.xml

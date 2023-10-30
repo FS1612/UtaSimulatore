@@ -12,7 +12,7 @@ namespace testUta.elementi_termodinamici
         
         double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
         double costante_Gas = Costanti.costante_Gas;
-        double airflowMandata = Costanti.batteria_airflow;
+        //double airflowMandata = Costanti.batteria_airflow;
         double flusso_ritorno;
         double temperatura_madata;
         double umidita_madata;
@@ -22,9 +22,19 @@ namespace testUta.elementi_termodinamici
         double temperatura_finale;
         double flusso_ariaMandata_kg_s;
         double flusso_ariaRitorno_kg_s;
+        double flusso_Mandata;
+        double areaMandata;
+        double areaRitorno;
+        double pressioneMandata;
+        double pressioneRitorno;
         Timer timer=new Timer();
-        public Miscelatore(double tempo, double flusso_ritorno, double temperatura_madata, double temperatura_ritorno, double umidita_madata, double umidita_ritorno)
+        public Miscelatore(double tempo, double flusso_ritorno, double temperatura_madata, double temperatura_ritorno, double umidita_madata, double umidita_ritorno, double flusso_Mandata,double areaSezioneMandata,double areaSezioneRitorno, double pressione_mandata,double pressione_Ritorno)
         {
+            this.pressioneMandata = pressione_mandata;
+            this.pressioneRitorno = pressione_Ritorno;
+            this.flusso_Mandata = flusso_Mandata;
+            this.areaMandata = areaSezioneMandata;
+            this.areaRitorno = areaSezioneRitorno;
             this.flusso_ritorno = flusso_ritorno;
             this.umidita_ritorno=umidita_ritorno;
             this.umidita_madata = umidita_madata;
@@ -50,17 +60,43 @@ namespace testUta.elementi_termodinamici
                 //le temperature sono in kelvin
                 double T_mandata_Kelvin = this.temperatura_madata + 273.15;
                 double T_ritorno_Kelvin = this.temperatura_ritorno + 273.15;
-                this.flusso_ariaMandata_kg_s = (this.airflowMandata / 3600) / 0.86;//14000
+                this.flusso_ariaMandata_kg_s = (this.flusso_Mandata / 3600) / 0.86;//14000
                 this.flusso_ariaRitorno_kg_s = (this.flusso_ritorno / 3600) / 0.86;//12600*apertura serranda
-                //Q_ritorno=flusso_ariaRitorno_kg_s*(T_ritorno_Kelvin-x)
-                //Q_mandata=flusso_ariaMandata_kg_s*(x-T_mandata_Kelvin)
-                //per bilancio termico ho Q_ritorno=Q_mandata
-                //=>flusso_ariaRitorno_kg_s*(T_ritorno_Kelvin-x)=flusso_ariaMandata_kg_s*(x-T_mandata_Kelvin)
-                //=>x=(flusso_ariaRitorno_kg_s*T_ritorno_Kelvin+flusso_ariaMandata_kg_s*T_mandata_Kelvin)/flusso_ariaMandata_kg_s+flusso_ariaRitorno_kg_s
-                double numeratore = flusso_ariaRitorno_kg_s * T_ritorno_Kelvin + flusso_ariaMandata_kg_s * T_mandata_Kelvin;
-                double denominatore = flusso_ariaMandata_kg_s + flusso_ariaRitorno_kg_s;
-                double x=numeratore/denominatore;
-                this.temperatura_finale = x - 273.15;
+                                                                                   //Q_ritorno=flusso_ariaRitorno_kg_s*(T_ritorno_Kelvin-x)
+                                                                                   //Q_mandata=flusso_ariaMandata_kg_s*(x-T_mandata_Kelvin)
+                                                                                   //per bilancio termico ho Q_ritorno=Q_mandata
+                                                                                   //=>flusso_ariaRitorno_kg_s*(T_ritorno_Kelvin-x)=flusso_ariaMandata_kg_s*(x-T_mandata_Kelvin)
+                                                                                   //=>x=(flusso_ariaRitorno_kg_s*T_ritorno_Kelvin+flusso_ariaMandata_kg_s*T_mandata_Kelvin)/flusso_ariaMandata_kg_s+flusso_ariaRitorno_kg_s
+
+
+                //double numeratore = flusso_ariaRitorno_kg_s * T_ritorno_Kelvin + flusso_ariaMandata_kg_s * T_mandata_Kelvin;
+                //double denominatore = flusso_ariaMandata_kg_s + flusso_ariaRitorno_kg_s;
+                //double x=numeratore/denominatore;
+                //this.temperatura_finale = x - 273.15;
+
+
+                //test
+                {
+                    // Definisci le condizioni iniziali dei due volumi d'aria
+                    double volume1 = flusso_Mandata/areaMandata; // Volume del primo volume d'aria (m³)
+                    double volume2 = flusso_ritorno/areaRitorno; // Volume del secondo volume d'aria (m³)
+                    
+                    // Calcola le masse dei due volumi d'aria utilizzando l'equazione del gas ideale
+                    
+                    double massa1 = (pressioneMandata * volume1) / (8.314 * T_mandata_Kelvin); // g
+                    double massa2 = (pressioneRitorno * volume2) / (8.314 * T_ritorno_Kelvin); // g
+
+                    // Calcola la massa totale
+                    double massaTotale = massa1 + massa2;
+
+                    // Calcola la temperatura finale utilizzando il primo principio della termodinamica
+                    double energiaInterna1 = massa1 * 1000 * 287 * T_mandata_Kelvin; // J
+                    double energiaInterna2 = massa2 * 1000 * 287 * T_ritorno_Kelvin; // J
+                    double energiaInternaTotale = energiaInterna1 + energiaInterna2; // J
+                    this.temperatura_finale = energiaInternaTotale / (massaTotale * 1000 * 287); // Kelvin
+
+                
+                }
             }
             else
             {

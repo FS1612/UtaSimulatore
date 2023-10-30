@@ -11,7 +11,7 @@ namespace testUta
 {
     public class Batteria
     {
-        double batteria_airflow =Costanti.batteria_airflow; 
+        double batteria_airflow /*=Costanti.batteria_airflow*/; 
         
         //double batteriaCalda_velocitaAria = Costanti.batteriaCalda_velocitaAria;
         //double batteriaCalda_capacitaFreddo = Costanti.batteriaCalda_capacitaFreddo;
@@ -66,7 +66,7 @@ namespace testUta
         double calore_Specifico_Aria_pressioneCostante = Costanti.calore_Specifico_Aria_PressioneCostante;
         double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
         double costante_Gas = Costanti.costante_Gas;
-        public Timer timer = new Timer();
+        public Timer timer = new Timer(1000);
         string stagione;
         string tipoBatteria;
         double tempoSimulazione;
@@ -85,10 +85,11 @@ namespace testUta
         double potenza_effettiva = 0;
         double tAcquaUscita;
         double deltaT;
-        public Batteria(double tempoSimulazione/*, string tipoBatteria, string stagione*/, double area, double pressione_attuale,double temperatura_attuale, double umidita_attuale,Valvola valvola,double perditaPressione,double potenza, double temp_Uscita_acqua)   
+        public Batteria( double area, double pressione_attuale,double temperatura_attuale, double umidita_attuale,Valvola valvola,double perditaPressione,double airflow,double temp_Uscita_acqua)   
         {// i parametri iniziali sono quelli di inizio simulazione=> saranno calcolati da un sensore posto prima della batteria
             //quelli finali saranno rilevati da un sensore diverso
-            this.tempoSimulazione = tempoSimulazione;
+
+            batteria_airflow = airflow;
             //da riparametrizzare appena saranno implementati i sensori
             this.tIniziale = temperatura_attuale;
             this.uIniziale = umidita_attuale;
@@ -103,10 +104,9 @@ namespace testUta
             //this.stagione = stagione;
             this.valvola = valvola;
             this.perditaPressione = perditaPressione;
-            this.potenza = potenza;
+            //this.potenza = potenza;
             this.tAcquaUscita = temp_Uscita_acqua;
-            //i timer accettano solo tempi in millisecondi
-            timer.Interval = tempoSimulazione*1000;
+
             timer.Enabled = true;
             timer.Elapsed += Timer_Elapsed;
             

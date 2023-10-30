@@ -148,10 +148,17 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-        public const double ventola_FattoreK_adimensionale = 170;
-        public const double ventola_Diametro = 14.9; //[M]
-        public const double ventolaMandata_SezioneTrasversale = 8.99; //[M^2]
-        public const double ventolaMandata_EfficienzaPressione = 0.577; //pressione massima generata/n.giri per generare la pressione massima
+        //public const double ventola_FattoreK_adimensionale = 170;
+        //public const double ventola_Diametro = 14.9; //[M]
+        public const double ventolaMandata_SezioneTrasversale = 1.60; //[M^2] 1080[mm]*1090[mm]
+        public const double ventolaRitorno_SezioneTrasversale = 1.0152; //[M^2] 1080[mm]*940[mm]
+        //public const double ventolaMandata_EfficienzaPressione = 0.577; //pressione massima generata/n.giri per generare la pressione massima
+        //parametri di interpolazione
+        public  double[] ventola_Rpm = {0,520,1050,1575,2155,2427,2620 };
+        public double[] ventola__Psf = {0,75,270,600,1080,1400,1600};
+        public  double[] ventola__Flusso = { 0, 1500, 3000, 4900, 6200, 7000, 14000 };//[m3/h]
+
+
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////

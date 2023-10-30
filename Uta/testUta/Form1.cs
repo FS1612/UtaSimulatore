@@ -38,8 +38,12 @@ namespace testUta
             // bat = new Batteria(1, batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo,batteriaFredda_TemperaturaAcquaUscita);
             //recuperatore = new Recuperatore(0, 1, 0, 0);
 
-            motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
-            v = new Ventilatore(100,motore_no_fineCorsa,Costanti.velocitaAriaMandata,Costanti.ventolaMandata_SezioneTrasversale);
+            //parametri per modellare la curva di efficienza della ventola di mandata
+            double[] psf_mandata = { 0, 75, 270, 600, 1080, 1400, 1600 };
+            double[] rpm_mandata = { 0, 520, 1050, 1575, 2155, 2427, 2620 };
+            double[] flusso_mandata = { 0, 1500, 3000, 4900, 6200, 7000, 14000 };//[m3/h]
+            //motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
+            //v = new Ventilatore(100,motore_no_fineCorsa,Costanti.ventolaMandata_SezioneTrasversale,psf_mandata,rpm_mandata,flusso_mandata);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -104,6 +108,7 @@ namespace testUta
             textPressionePostVentola.Invoke((MethodInvoker)(() => textPressionePostVentola.Text = v.pressioneFinale.ToString()));
             textPressionePreventola.Invoke((MethodInvoker)(() => textPressionePreventola.Text = v.pressioneIniziale.ToString()));
             textVelocitaVentola.Invoke((MethodInvoker)(() => textVelocitaVentola.Text = v.velocitàAttuale.ToString()));
+            textVelocitaAria.Invoke((MethodInvoker)(() => textVelocitaAria.Text = v.velocitaAria.ToString()));
         }
         private void aggiornaVelocita(object sender, EventArgs e)
         {
