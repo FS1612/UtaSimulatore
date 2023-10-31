@@ -30,17 +30,17 @@ namespace testUta
         public const double temperaturaEsterna = 20; //[°C]
         public const double umiditaEsterna = 20; //[%]
         public const double pressioneEsterna = 250; //[Pa]
-        public const double costanteStefanBoltzmann = 5.67e-8; //[W/(M^2*K^4)]
+        //public const double costanteStefanBoltzmann = 5.67e-8; //[W/(M^2*K^4)]
         public const double calore_Specifico_Acqua = 4186;// [J/kg*K]
-        public const double calore_Specifico_Aria_VolumeCostante = 0.717  ;// [J/g*K]
-        public const double calore_Specifico_Aria_PressioneCostante = 1005  ;// [J/Kg*K]
-        public const double massa_Molecolare_Aria = 28.96;//[ g/mol]
+        public const double calore_Specifico_Aria_VolumeCostante = 0.717;// [J/g*K]
+        public const double calore_Specifico_Aria_PressioneCostante = 1005;// [J/Kg*K]
+        //public const double massa_Molecolare_Aria = 28.96;//[ g/mol]
         public const double costante_Gas = 8.314;//[ J/(mol·K)] //pressione in Pa, volume in M^3 e temperatura in K
-        public const double tempoSimulazione = 1; //[s] 
-        public const double flussoMandata = 14000; //[m^3/h] 
-        public const double flussoRipresa = 12600; //[m^3/h] 
-        public const double velocitaAriaMandata = 1.67; //[m/s] 
-        public const double velocitaAriaRiipresa = 1.50; //[m/s] 
+        //public const double tempoSimulazione = 1; //[s] 
+        //public const double flussoMandata = 14000; //[m^3/h] 
+        //public const double flussoRipresa = 12600; //[m^3/h] 
+        //public const double velocitaAriaMandata = 1.67; //[m/s] 
+        //public const double velocitaAriaRiipresa = 1.50; //[m/s] 
 
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
@@ -50,8 +50,8 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         public const double aperturaMassimaValvola = 100; //
-        public const double batteria_airflow = 14000; //[m^3/h]
-        public const double coefficienteConvezioneAria = 20;//[W/(m^2*K)]
+
+
 
         /*le batterie ricevono sempre acqua indipendentemente dal periodo dell'anno,
           a variare sono i parametri relativi alla velocità, al flusso dell'acqua
@@ -68,21 +68,21 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-        public const double batteriaCalda_velocitaAria = 2.10; //[m/s]
-        public const double batteriaCalda_capacitaFreddo = 37500; //[W]
-        public const double batteriaCalda_capacitaCaldo = 23910; //[W]
-           /*i valori massimi sono ottenuti come valore medio *2*/
-        public const double batteriaCalda_flussoMassimo_Caldo = 1.142; //[l/s]
-        public const double batteriaCalda_flussoMassimo_Freddo = 1.142; //[l/s]
+        //public const double batteriaCalda_velocitaAria = 2.10; //[m/s]
+        //public const double batteriaCalda_capacitaFreddo = 37500; //[W]
+        //public const double batteriaCalda_capacitaCaldo = 23910; //[W]
+        //   /*i valori massimi sono ottenuti come valore medio *2*/
+        //public const double batteriaCalda_flussoMassimo_Caldo = 1.142; //[l/s]
+        //public const double batteriaCalda_flussoMassimo_Freddo = 1.142; //[l/s]
         public const double batteriaCalda_velocitaMassimaAcqua_Freddo = 3.08; //[m/s]
         public const double batteriaCalda_velocitaMassimoAcqua_Caldo = 1.88; //[m/s]
-        public const double batteriaCalda_polliciTubatura = 25;//[mm]
+        //public const double batteriaCalda_polliciTubatura = 25;//[mm]
         public const double batteriaCalda_diametroValvola = 20;//[mm] diametro
         public const double batteriaCalda_TemperaturaAcquaIngresso = 45;//[°C]
         public const double batteriaCalda_TemperaturaAcquaUscita = 35;//[°C]
         public const double batteriaCalda_PerditaPressione = 53;//[PA]
         public const double batteriaCalda_MassimaPerditaPressione =18;//[PA]
-        public const double batteriaCalda_Spessore = 270;//[MM]
+        //public const double batteriaCalda_Spessore = 270;//[MM]
         public const double batteriaCalda_Area = 1.16;//[M^2]
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
@@ -91,21 +91,21 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-        public const double batteriaFredda_velocitaAria = 2.12; //[m/s]
-        public const double batteriaFredda_capacitaFreddo = 30130; //[W]
-        public const double batteriaFredda_capacitaCaldo = 47500; //[W]
-            /*i valori massimi sono ottenuti come valore medio *2*/
-        public const double batteriaFredda_flussoMassimo_Caldo = 2.880; //[l/s]
-        public const double batteriaFredda_flussoMassimo_Freddo = 2.27; //[l/s]
+        //public const double batteriaFredda_velocitaAria = 2.12; //[m/s]
+        //public const double batteriaFredda_capacitaFreddo = 30130; //[W]
+        //public const double batteriaFredda_capacitaCaldo = 47500; //[W]
+        /*i valori massimi sono ottenuti come valore medio *2*/
+        //public const double batteriaFredda_flussoMassimo_Caldo = 2.880; //[l/s]
+        //public const double batteriaFredda_flussoMassimo_Freddo = 2.27; //[l/s]
         public const double batteriaFredda_velocitaMassimaAcqua_Freddo = 2.12; //[m/s]
         public const double batteriaFredda_velocitaMassimaAcqua_Caldo = 1.68; //[m/s]
-        public const double batteriaFredda_polliciTubatura = 45;//[mm] diametro
+        //public const double batteriaFredda_polliciTubatura = 45;//[mm] diametro
         public const double batteriaFredda_diametroValvola = 32;//[mm] diametro
         public const double batteriaFredda_TemperaturaAcquaIngresso = 13;//[°C]
         public const double batteriaFredda_TemperaturaAcquaUscita = 18;//[°C]
         public const double batteriaFredda_PerditaPressione = 53;//[PA]
         public const double batteriaFredda_MassimaPerditaPressione = 53;//[PA]
-        public const double batteriaFredda_Spessore = 490;//[MM]
+        //public const double batteriaFredda_Spessore = 490;//[MM]
         public const double batteriaFredda_Area = 2.89;//[M^2]
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
@@ -114,15 +114,15 @@ namespace testUta
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
-        public const double batteriaFredda_Umidificatrice_flussoMassimo = 7.634;//[l/s]
+        //public const double batteriaFredda_Umidificatrice_flussoMassimo = 7.634;//[l/s]
         public const double batteriaFredda_Umidificatrice_velocitaMassimaAcqua = 2.46;//[m/s]
         public const double batteriaFredda_Umidificatrice_TemperaturaAcquaIngresso = 6;//[°C]
         public const double batteriaFredda_Umidificatrice_TemperaturaAcquaUscita = 11;//[°C]
-        public const double batteriaFredda_Umidificatrice_velocitaAria = 2.13; //[m/s]
-        public const double batteriaFredda_Umidificatrice_capacita = 79.89; //[kw]
+        //public const double batteriaFredda_Umidificatrice_velocitaAria = 2.13; //[m/s]
+        //public const double batteriaFredda_Umidificatrice_capacita = 79.89; //[kw]
         public const double batteriaFredda_Umidificatrice_PerditaPressione_Secco = 111;//[PA]
         public const double batteriaFredda_Umidificatrice_PerditaPressione_Umido = 72;//[PA]
-        public const double batteriaFredda_Umidificatrice_Spessore = 1210;//[MM]
+        //public const double batteriaFredda_Umidificatrice_Spessore = 1210;//[MM]
         public const double batteriaFredda_Umidificatrice_Area = 7.51;//[M^2]
         public const double batteriaFredda_Umidificatrice_diametroValvola = 50;//[MM]
 

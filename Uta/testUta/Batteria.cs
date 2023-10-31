@@ -14,17 +14,10 @@ namespace testUta
         double batteria_airflow /*=Costanti.batteria_airflow*/; 
         
           double calore_Specifico_Acqua = Costanti.calore_Specifico_Acqua;
-        //double calore_Specifico_Aria = Costanti.calore_Specifico_Aria_VolumeCostante;
         double calore_Specifico_Aria_pressioneCostante = Costanti.calore_Specifico_Aria_PressioneCostante;
-        //double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
         double costante_Gas = Costanti.costante_Gas;
-        //public Timer timer = new Timer(1000);
-        //string stagione;
-        //string tipoBatteria;
-        //double tempoSimulazione;
         double tIniziale;
         double tFinale;
-        //double testerna;
         double uIniziale;
         double uFinale;
         double pIniziale;
@@ -32,8 +25,6 @@ namespace testUta
         Valvola valvola;
         double area;
         double perditaPressione;
-        //double aperturaValvola;
-        //double potenza = 0;
         double potenza_effettiva = 0;
         double tAcquaUscita;
         double deltaT;
@@ -59,92 +50,15 @@ namespace testUta
             //this.potenza = potenza;
             this.tAcquaUscita = temp_Uscita_acqua;
 
-            //timer.Enabled = true;
-            //timer.Elapsed += Timer_Elapsed;
             
         }
 
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {//le batterie sono sempre attive a cambiare sono solo i parametri di funzionamento 
-         //if (this.tipoBatteria.Equals(Costanti.batteriaCalda))
-         //{
-         //    //if (this.stagione.Equals(Costanti.stagioneCalda))
-         //    //{
-
-            //        //double flusso_effettivo = this.valvola.Get_Flusso_attuale();
-            //        //double delta_T = calcoloScambiTermici(batteriaCalda_Area, batteriaCalda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //    //}
-            //    //else if (this.stagione.Equals(Costanti.stagioneFredda))
-            //    //{
-            //    //    double flusso_effettivo = this.valvola.Get_Flusso_attuale();
-            //    //    double delta_T = calcoloScambiTermici(batteriaCalda_Area, batteriaCalda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //    //}
-            //}
-            //else if (this.tipoBatteria.Equals(Costanti.batteriaFredda))
-            //{
-            //    //if (this.stagione.Equals(Costanti.stagioneCalda))
-            //    //{
-            //    //double flusso_effettivo = this.valvola.Get_Flusso_attuale();
-            //    //double delta_T = calcoloScambiTermici(batteriaFredda_Area, batteriaFredda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //    //}
-            //    //else if (this.stagione.Equals(Costanti.stagioneFredda))
-            //    //{
-            //    //    double flusso_effettivo = this.valvola.Get_Flusso_attuale();
-            //    //    double delta_T = calcoloScambiTermici(batteriaFredda_Area, batteriaFredda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //    //}
-            //}
-            //else if (this.tipoBatteria.Equals(Costanti.batteriaFreddaUmidificatrice))
-            //{
-            //    double flusso_effettivo = this.valvola.Get_Flusso_attuale();
-            //    double delta_T = calcoloScambiTermici(batteriaFredda_Umidificatrice_Area, batteriaFredda_Umidificatrice_TemperaturaAcquaIngresso, flusso_effettivo);
-            //}
-            aggiorna();
-
-        }
+       
         public void aggiorna()
         {
             double flusso_effettivo = this.valvola.Get_Flusso_attuale(); ;
             double temperaturaAcqua=this.valvola.Get_Temperatura_Acqua();
 
-            //switch (tipoBatteria)
-            //{
-            //    case Costanti.batteriaCalda when flusso_effettivo > 0.0:
-            //        calcoloScambiTermici(batteriaCalda_Area, batteriaCalda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //        CalcoloVariazioneUmidità();
-
-            //        this.pFinale -= this.batteriaCalda_PerditaPressione;
-            //        break;
-            //    case Costanti.batteriaFredda when flusso_effettivo > 0.0:
-            //        calcoloScambiTermici(batteriaFredda_Area, batteriaFredda_TemperaturaAcquaIngresso, flusso_effettivo);
-            //        this.pFinale -= this.batteriaFredda_PerditaPressione;
-            //        CalcoloVariazioneUmidità();
-            //        break;
-            //    case Costanti.batteriaFreddaUmidificatrice when flusso_effettivo > 0.0:
-            //        calcoloScambiTermici(batteriaFredda_Umidificatrice_Area, batteriaFredda_Umidificatrice_TemperaturaAcquaIngresso, flusso_effettivo);
-            //        CalcoloVariazioneUmidità();
-
-            //        break;
-            //    case Costanti.batteriaCalda when flusso_effettivo == 0.0:
-            //        this.pFinale -= this.batteriaCalda_PerditaPressione;
-
-            //        this.tFinale = this.tIniziale;
-            //        this.uFinale = this.uIniziale;
-            //        break;
-            //    case Costanti.batteriaFredda when flusso_effettivo == 0.0:
-            //        this.pFinale -= this.batteriaFredda_PerditaPressione;
-            //        this.tFinale = this.tIniziale;
-            //        this.uFinale = this.uIniziale;
-
-            //        break;
-            //    case Costanti.batteriaFreddaUmidificatrice when flusso_effettivo == 0.0:
-            //        break;
-            //    default:
-            //        this.tFinale = this.tIniziale;
-            //        this.uFinale = this.uIniziale;
-
-            //        break;
-            //}
-            //if (flusso_effettivo > 0)
             if (this.valvola.Get_Apertura() > 0)
             {
                 if (pFinale > pIniziale - perditaPressione) {  

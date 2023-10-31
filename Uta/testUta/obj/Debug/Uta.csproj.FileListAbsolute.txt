@@ -87,3 +87,7 @@ C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.dll
 C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.dll
 C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.xml
 C:\gitlab\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.xml
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.dll
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.dll
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\testUta\bin\Debug\MathNet.Numerics.xml
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\testUta\bin\Debug\System.ValueTuple.xml

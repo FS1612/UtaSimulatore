@@ -48,3 +48,5 @@ C:\gitlab\UtaSimulatore\Uta\UnitTestUta\bin\Debug\Microsoft.VisualStudio.TestPla
 C:\gitlab\UtaSimulatore\Uta\UnitTestUta\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\gitlab\UtaSimulatore\Uta\UnitTestUta\bin\Debug\MathNet.Numerics.xml
 C:\gitlab\UtaSimulatore\Uta\UnitTestUta\obj\Debug\UnitTestUta.csproj.CopyComplete
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\UnitTestUta\bin\Debug\MathNet.Numerics.dll
+C:\Users\fsave\Desktop\UtaSimulatore\Uta\UnitTestUta\bin\Debug\MathNet.Numerics.xml

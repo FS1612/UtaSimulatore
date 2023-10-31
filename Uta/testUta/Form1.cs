@@ -14,18 +14,18 @@ namespace testUta
 {
     public partial class Form1 : Form
     {
-        double batteriaCalda_velocitaAcquaFreddo = Costanti.batteriaCalda_velocitaMassimaAcqua_Freddo;
-        double batteriaCalda_velocitaAcquaCaldo = Costanti.batteriaCalda_velocitaMassimoAcqua_Caldo;
+        //double batteriaCalda_velocitaAcquaFreddo = Costanti.batteriaCalda_velocitaMassimaAcqua_Freddo;
+        //double batteriaCalda_velocitaAcquaCaldo = Costanti.batteriaCalda_velocitaMassimoAcqua_Caldo;
         double batteriaCalda_TemperaturaAcquaIngresso = Costanti.batteriaCalda_TemperaturaAcquaIngresso;
         double batteriaCalda_diametroValvola = Costanti.batteriaCalda_diametroValvola;
         double batteriaCalda_Area = Costanti.batteriaCalda_Area;
         double batteriaCalda_PerditaPressione = Costanti.batteriaCalda_PerditaPressione;
-        double batteriaCalda_capacitaCaldo = Costanti.batteriaCalda_capacitaCaldo;
-        double batteriaFredda_flussoFreddo = Costanti.batteriaFredda_flussoMassimo_Freddo;
+        //double batteriaCalda_capacitaCaldo = Costanti.batteriaCalda_capacitaCaldo;
+        
         double batteriaFredda_velocitaAcquaFreddo = Costanti.batteriaFredda_velocitaMassimaAcqua_Freddo;
         double batteriaFredda_diametroValvola = Costanti.batteriaFredda_diametroValvola;
         double batteriaFredda_TemperaturaAcquaIngresso = Costanti.batteriaFredda_TemperaturaAcquaIngresso;
-        double batteriaFredda_capacitaFreddo = Costanti.batteriaFredda_capacitaFreddo;
+        
         double batteriaFredda_TemperaturaAcquaUscita = Costanti.batteriaFredda_TemperaturaAcquaUscita;
         Batteria bat;
         Recuperatore recuperatore;
@@ -42,7 +42,7 @@ namespace testUta
             double[] flusso_mandata = { 0, 1500, 3000, 4900, 6200, 7000, 14000 };//[m3/h]
             motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
             v = new Ventilatore(100, motore_no_fineCorsa, Costanti.ventolaMandata_SezioneTrasversale, psf_mandata, rpm_mandata, flusso_mandata);
-            Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
+            Valvola valv = new Valvola(0, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
             bat = new Batteria(batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,v.flusso_m3_h, batteriaFredda_TemperaturaAcquaUscita);
             recuperatore = new Recuperatore(0, 1, 0, 0);
             

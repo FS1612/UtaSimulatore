@@ -11,8 +11,7 @@ namespace testUta.Elementi_Meccanici
     {
         double efficienzaTemperatura=Costanti.Recuperatore_Efficienza_Termica;
         double efficienzaUmidita=Costanti.Recuperatore_Efficienza_Umidita;
-        double flussoMandata = Costanti.flussoMandata;
-        double flussoRipresa = Costanti.flussoRipresa;
+
         double allarme;//valore booleano
         double stato;//valore booleano
         double avviamento;//valore booleano

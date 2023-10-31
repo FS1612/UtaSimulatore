@@ -51,9 +51,12 @@
   <ItemGroup>
     <Compile Include="TestBatteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest2.cs" />
     <Compile Include="TestSensore.cs" />
     <Compile Include="TestSensoreDigitale.cs" />
+    <Compile Include="TestValvola.cs" />
+    <Compile Include="TestMotore.cs" />
+    <Compile Include="TestFiltro.cs" />
+    <Compile Include="TestMiscelatore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
