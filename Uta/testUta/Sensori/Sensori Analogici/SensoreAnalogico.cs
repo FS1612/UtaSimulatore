@@ -13,7 +13,7 @@ namespace testUta.Sensori.Sensori_Analogici
         public string marca { get; set ; }
         public string modello { get ; set; }
         public string unitaMisura { get; set; }
-        public double massimo { get; set; }
+       
         public double minimo { get; set; }
         public double rangeMassimo { get ; set; }
         public double rangeMinimo { get; set; }

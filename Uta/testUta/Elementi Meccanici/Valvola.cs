@@ -10,7 +10,8 @@ using System.Timers;
 namespace testUta
 {
     public  class Valvola
-    {Timer timer =new Timer();
+    {
+        //Timer timer =new Timer();
         //double coefficiente_Flusso = Costanti.valvola_Ccoefficiente_Flusso;
         //double differenza_Pressione_BatteriaFredda_Freddo = Costanti.valvola_Differenza_Pressione_BatteriaFredda_Freddo;
         //double differenza_Pressione_BatteriaFredda_Caldo = Costanti.valvola_Differenza_Pressione_BatteriaFredda_Caldo;
@@ -38,7 +39,7 @@ namespace testUta
         double Area_Sezione_Trasversale_Totale;
         double Area_Sezione_Trasversale_Attuale;
         double massa_acqua;
-        public Valvola(double apertura,double tempoSimulazione,/* string tipoBatteria,string stagione,*/ double velocitaAcqua,double temperaturaAcqua,double diametro)
+        public Valvola(double apertura, double velocitaAcqua,double temperaturaAcqua,double diametro)
         {this.tempoSimulazione=tempoSimulazione*1000;
             this.velocitaAcqua = velocitaAcqua;
             this.temperaturaAcqua = temperaturaAcqua;
@@ -46,9 +47,9 @@ namespace testUta
             //this.funzione = tipoBatteria + ":" + stagione;
             /*this.stagione = stagione;*/
             this.percentuale_Apertura = apertura;
-            this.timer.Interval = tempoSimulazione*1000;
-            this.timer.Enabled = true;
-            this.timer.Elapsed += Timer_Elapsed;
+            //this.timer.Interval = tempoSimulazione*1000;
+            //this.timer.Enabled = true;
+            //this.timer.Elapsed += Timer_Elapsed;
             //this.tipoBatteria = tipoBatteria;
         }
 

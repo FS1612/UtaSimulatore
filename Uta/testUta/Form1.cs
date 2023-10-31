@@ -34,16 +34,18 @@ namespace testUta
         public Form1()
         {
             InitializeComponent();
-            // Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
-            // bat = new Batteria(1, batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,batteriaFredda_capacitaFreddo,batteriaFredda_TemperaturaAcquaUscita);
-            //recuperatore = new Recuperatore(0, 1, 0, 0);
+            
 
             //parametri per modellare la curva di efficienza della ventola di mandata
             double[] psf_mandata = { 0, 75, 270, 600, 1080, 1400, 1600 };
             double[] rpm_mandata = { 0, 520, 1050, 1575, 2155, 2427, 2620 };
             double[] flusso_mandata = { 0, 1500, 3000, 4900, 6200, 7000, 14000 };//[m3/h]
-            //motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
-            //v = new Ventilatore(100,motore_no_fineCorsa,Costanti.ventolaMandata_SezioneTrasversale,psf_mandata,rpm_mandata,flusso_mandata);
+            motore_no_fineCorsa = new Motore("motore figo", "1234", "nuova", "io", "motore per fare un po tutto", 2818, -1, 150, 90, 150);
+            v = new Ventilatore(100, motore_no_fineCorsa, Costanti.ventolaMandata_SezioneTrasversale, psf_mandata, rpm_mandata, flusso_mandata);
+            Valvola valv = new Valvola(0, 1, batteriaFredda_velocitaAcquaFreddo, batteriaFredda_TemperaturaAcquaIngresso, batteriaFredda_diametroValvola);
+            bat = new Batteria(batteriaCalda_Area, 200, 40, 20, valv, batteriaCalda_PerditaPressione,v.flusso_m3_h, batteriaFredda_TemperaturaAcquaUscita);
+            recuperatore = new Recuperatore(0, 1, 0, 0);
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,6 +81,7 @@ namespace testUta
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
             //textTempo.Invoke((MethodInvoker)(() => textTempo.Text = 1000 + " ms")) ;
             //textTAttuale.Invoke((MethodInvoker)(() => textTAttuale.Text = bat.Get_Temperatura_Finale().ToString())) ;
             //textAperturaValvola.Invoke((MethodInvoker)(() => textAperturaValvola.Text = bat.Get_Valvola().Get_Apertura().ToString())) ;

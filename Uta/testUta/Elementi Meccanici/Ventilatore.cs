@@ -23,7 +23,7 @@ namespace testUta.Elementi_Meccanici
         double sezioneTrasversale;
         Timer timer=new Timer(1000);
         Motore M;
-        double flusso_m3_h;
+        public double flusso_m3_h { get; set; }
         //double velocita;
         public Ventilatore(double pressioneIniziale, Motore motore,  double sezione, double[] psf, double[] rpm, double[] flusso)
         {

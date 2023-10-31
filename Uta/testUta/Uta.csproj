@@ -81,6 +81,7 @@
     <Compile Include="Sensori\Sensori Analogici\SensorePressione.cs" />
     <Compile Include="Sensori\Sensori Analogici\SensoreTemperatura.cs" />
     <Compile Include="Sensori\Sensori Analogici\SensoreUmidita.cs" />
+    <Compile Include="Sensori\Sensori Digitali\SensoreDigitale.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

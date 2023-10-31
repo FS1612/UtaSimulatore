@@ -13,66 +13,18 @@ namespace testUta
     {
         double batteria_airflow /*=Costanti.batteria_airflow*/; 
         
-        //double batteriaCalda_velocitaAria = Costanti.batteriaCalda_velocitaAria;
-        //double batteriaCalda_capacitaFreddo = Costanti.batteriaCalda_capacitaFreddo;
-        //double batteriaCalda_capacitaCaldo = Costanti.batteriaCalda_capacitaCaldo;
-        //double batteriaCalda_flussoCaldo = Costanti.batteriaCalda_flussoMassimo_Caldo;
-        //double batteriaCalda_flussoFreddo = Costanti.batteriaCalda_flussoMassimo_Freddo;
-        //double batteriaCalda_velocitaAcquaFreddo = Costanti.batteriaCalda_velocitaMassimaAcqua_Freddo;
-        //double batteriaCalda_velocitaAcquaCaldo = Costanti.batteriaCalda_velocitaMassimoAcqua_Caldo;
-        //double batteriaCalda_polliciTubatura = Costanti.batteriaCalda_polliciTubatura;
-        //double batteriaCalda_diametroValvola = Costanti.batteriaCalda_diametroValvola;
-        //double batteriaCalda_TemperaturaAcquaIngresso = Costanti.batteriaCalda_TemperaturaAcquaIngresso;
-        //double batteriaCalda_TemperaturaAcquaUscita = Costanti.batteriaCalda_TemperaturaAcquaUscita;
-        //double batteriaCalda_PerditaPressione = Costanti.batteriaCalda_PerditaPressione;
-        //double batteriaCalda_MassimaPerditaPressione = Costanti.batteriaCalda_MassimaPerditaPressione;
-        //double batteriaCalda_Spessore = Costanti.batteriaCalda_Spessore;
-        //double batteriaCalda_Area = Costanti.batteriaCalda_Area;
-        //double batteriaFredda_velocitaAria = Costanti.batteriaFredda_velocitaAria;
-        //double batteriaFredda_capacitaFreddo = Costanti.batteriaFredda_capacitaFreddo;
-        //double batteriaFredda_capacitaCaldo = Costanti.batteriaFredda_capacitaCaldo;
-        //double batteriaFredda_flussoCaldo = Costanti.batteriaFredda_flussoMassimo_Caldo;
-        //double batteriaFredda_flussoFreddo = Costanti.batteriaFredda_flussoMassimo_Freddo;
-        //double batteriaFredda_velocitaAcquaFreddo = Costanti.batteriaFredda_velocitaMassimaAcqua_Freddo;
-        //double batteriaFredda_velocitaAcquaCaldo = Costanti.batteriaFredda_velocitaMassimaAcqua_Caldo;
-        //double batteriaFredda_polliciTubatura = Costanti.batteriaFredda_polliciTubatura;
-        //double batteriaFredda_diametroValvola = Costanti.batteriaFredda_diametroValvola;
-        //double batteriaFredda_TemperaturaAcquaIngresso = Costanti.batteriaFredda_TemperaturaAcquaIngresso;
-        //double batteriaFredda_TemperaturaAcquaUscita = Costanti.batteriaFredda_TemperaturaAcquaUscita;
-        //double batteriaFredda_PerditaPressione = Costanti.batteriaFredda_PerditaPressione;
-        //double batteriaFredda_MassimaPerditaPressione = Costanti.batteriaFredda_MassimaPerditaPressione;
-        //double batteriaFredda_Spessore = Costanti.batteriaFredda_Spessore;
-        //double batteriaFredda_Area = Costanti.batteriaFredda_Area;
-        //double batteriaFredda_Umidificatrice_flusso = Costanti.batteriaFredda_Umidificatrice_flussoMassimo;
-        //double batteriaFredda_Umidificatrice_TemperaturaAcquaIngresso = Costanti.batteriaFredda_Umidificatrice_TemperaturaAcquaIngresso;
-        //double batteriaFredda_Umidificatrice_TemperaturaAcquaUscita = Costanti.batteriaFredda_Umidificatrice_TemperaturaAcquaUscita;
-        //double batteriaFredda_Umidificatrice_velocitaAria  = Costanti.batteriaFredda_Umidificatrice_velocitaAria ;
-        //double batteriaFredda_Umidificatrice_capacita  = Costanti.batteriaFredda_Umidificatrice_capacita;
-        //double batteriaFredda_Umidificatrice_PerditaPressione_Secco = Costanti.batteriaFredda_Umidificatrice_PerditaPressione_Secco;
-        //double batteriaFredda_Umidificatrice_PerditaPressione_Umido = Costanti.batteriaFredda_Umidificatrice_PerditaPressione_Umido;
-        //double batteriaFredda_Umidificatrice_Spessore  = Costanti.batteriaFredda_Umidificatrice_Spessore ;
-        //double batteriaFredda_Umidificatrice_Area = Costanti.batteriaFredda_Umidificatrice_Area;
-
-
-
-
-
-
-        double tEsterna = Costanti.temperaturaEsterna;
-        double uEsterna = Costanti.umiditaEsterna;
-        double costante_StefanBoltzmann = Costanti.costanteStefanBoltzmann;
-        double calore_Specifico_Acqua = Costanti.calore_Specifico_Acqua;
-        double calore_Specifico_Aria = Costanti.calore_Specifico_Aria_VolumeCostante;
+          double calore_Specifico_Acqua = Costanti.calore_Specifico_Acqua;
+        //double calore_Specifico_Aria = Costanti.calore_Specifico_Aria_VolumeCostante;
         double calore_Specifico_Aria_pressioneCostante = Costanti.calore_Specifico_Aria_PressioneCostante;
-        double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
+        //double massa_Molecolare_Aria = Costanti.massa_Molecolare_Aria;
         double costante_Gas = Costanti.costante_Gas;
-        public Timer timer = new Timer(1000);
-        string stagione;
-        string tipoBatteria;
-        double tempoSimulazione;
+        //public Timer timer = new Timer(1000);
+        //string stagione;
+        //string tipoBatteria;
+        //double tempoSimulazione;
         double tIniziale;
         double tFinale;
-        double testerna;
+        //double testerna;
         double uIniziale;
         double uFinale;
         double pIniziale;
@@ -81,7 +33,7 @@ namespace testUta
         double area;
         double perditaPressione;
         //double aperturaValvola;
-        double potenza=0;
+        //double potenza = 0;
         double potenza_effettiva = 0;
         double tAcquaUscita;
         double deltaT;
@@ -107,8 +59,8 @@ namespace testUta
             //this.potenza = potenza;
             this.tAcquaUscita = temp_Uscita_acqua;
 
-            timer.Enabled = true;
-            timer.Elapsed += Timer_Elapsed;
+            //timer.Enabled = true;
+            //timer.Elapsed += Timer_Elapsed;
             
         }
 

@@ -13,9 +13,8 @@ namespace testUta.Sensori
         string marca { get; set; }
         string modello { get; set; }
         string unitaMisura { get; set; }
-        double massimo { get; set; }
-        double minimo { get; set; }
-
+        double rangeMassimo { get; set; }
+        double rangeMinimo { get; set; }
         double valoreAttuale { get; set; }
         string descrizione { get; set; }
     }
